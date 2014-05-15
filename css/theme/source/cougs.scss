@@ -38,15 +38,15 @@ html * {
 // Solarized colors
 $base03:    #002b36;
 $base02:    #073642;
-$base01:    #586e75;
-$base00:    #657b83;
+$base01:    #5e6a71; // WSU Grey
+$base00:    #4f868e; // WSU Blue
 $base0:     #839496;
 $base1:     #93a1a1;
 $base2:     #eee8d5;
-$base3:     #cccccc;
+$base3:     #eff0f1; // WSU Lightest Grey
 $yellow:    #b58900;
 $orange:    #cb4b16;
-$red:       #dc322f;
+$red:       #981e32; // WSU Crimson
 $magenta:   #d33682;
 $violet:    #6c71c4;
 $blue:      #268bd2;
@@ -58,7 +58,7 @@ $mainColor: $base00;
 $headingColor: $base01;
 $headingTextShadow: none;
 $backgroundColor: $base3;
-$linkColor: $blue;
+$linkColor: $red;
 $linkColorHover: lighten( $linkColor, 20% );
 $selectionBackgroundColor: $magenta;
 
