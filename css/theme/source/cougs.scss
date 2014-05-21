@@ -62,6 +62,35 @@ $linkColor: $red;
 $linkColorHover: lighten( $linkColor, 20% );
 $selectionBackgroundColor: $magenta;
 
+// Primary/body text
+$mainFont: 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
+$mainFontSize: 32px;
+$mainColor: $base00;
+
+// Headings
+$headingMargin: 0 0 20px 0;
+$headingFont: 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
+$headingColor: $base01;
+$headingLineHeight: 0.9em;
+$headingLetterSpacing: 0.02em;
+$headingTextTransform: uppercase;
+$headingTextShadow: 0px 0px 6px rgba(0,0,0,0.2);
+$heading1TextShadow: $headingTextShadow;
+
+// Links and actions
+$linkColor: #13DAEC;
+$linkColorHover: lighten( $linkColor, 20% );
+
+// Text selection
+$selectionBackgroundColor: #FF5E99;
+$selectionColor: #fff;
+
+// Generates the presentation background, can be overridden
+// to return a background image or gradient
+@mixin bodyBackground() {
+	background: $backgroundColor;
+}
+
 // Background generator
 // @mixin bodyBackground() {
 // 	@include radial-gradient( rgba($base3,1), rgba(lighten($base3, 20%),1) );
