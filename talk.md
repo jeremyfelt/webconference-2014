@@ -212,7 +212,40 @@ The most important part—both Vagrant and VirtualBox are cross platform. This l
 
 ### Establish a Workflow
 
+As with version control, having a formal provisioning process is most useful when a workflow has been established.
+
+* When should provisioning run on production?
+* How long should provisioning be tested in development?
+* Should provisioning include debug tools in development?
+
+### Example Workflow
+
+So my daily workflow, almost the first thing I do when I walk in in the morning, is:
+
+`vagrant up`
+
+This fires my virtual machine up and starts all of the services I need to develop locally.
+
+I subscribe to updates on packages like PHP and Nginx, so I'm often aware when a new release is available and if it includes updates that we should look at for production. At this point, I'll run `vagrant provision` to have my local machine go through the same provisioning that would occur on production.
+
+If this all completes successfully and the project is working as expected, then I connect to the production machine and issue two commands.
+
+1. Pull down the latest provisioning configuration.
+2. Run Salt.
+
+Really, this could be simplified into one step and it could automatically happen based on a trigger in our version control setup, but I'm still in the phase of paying close attention.
+
+What's beautiful is that even when doing a large update - like recompiling Nginx 1.7.1 from source last week - the web server only blips for a couple seconds during provisioning.
+
+And if something was to blow up completely, only a few commands and about 5-10 minutes stand in the way of having a working server up and running again.
+
 ### Include Everyone
+
+Just like with version control, there's a learning curve here. But just like version control, the more the team is familiar with the workflow, the larger benefit it will have on the team as a whole. It's kind of like knowing where your food comes from.
+
+Being aware of the process, possibly from browsing documentation, is the first step. How the server gets to be how it is and how we mimic this locally.
+
+The next step is getting everyone working on a virtual machine rather than on production via FTP or through MAMP or XAMPP or some other development environment. I'm happy to have a crew of people using Vagrant now at WSU that avoided the terminal at all costs before. As long as you're familiar with some of the basics and have a support path available to you, everything is possible.
 
 ## Deployment
 
