@@ -249,17 +249,36 @@ The next step is getting everyone working on a virtual machine rather than on pr
 
 ## Deployment
 
-### painless, seamless
+Deployment is the act of getting things into production. In our case, it's specifically getting things that have been tagged as stable in our version control system into production.
 
-### start small, spread out
+There are so many ways of doing this, so the best answer is a combination of things.
 
-### version control your scripts
+#### git, grunt, fabric, bash, rsync
 
-### ability to rollback
+### Make it painless, then makeit seamless.
 
-### git, grunt, fabric
+### Start small, spread out.
+
+### Version control
+
+### Rollback Ability
+
+### Establish a Workflow
+
+### Example Workflow
+
+#### Theme deployment via GitHub webhook
+#### pre-receive hooks for other deployment
 
 ### Include Everyone
+
+The best deployment tools are those that everyone on your team can use. One of the common sticking points that I've run into is how much everybody enjoys cowboy coding. I've made changes to my CSS file, things look good, and I want to drag it to my shared drive on the server so that it's live.
+
+This just hurts.
+
+At the same time, it's painless for the deployer. Possibly painful for everyone at a later time, but that moment is painless.
+
+If possible, integrate deployment steps into other parts of the workflow. As I showed in the example workflows, I've found it extremely useful to push minor tagged releases in version control as production ready. This lets anyone use either the command line or the tools available through GitHub to deploy code to the server.
 
 ## Testing
 
