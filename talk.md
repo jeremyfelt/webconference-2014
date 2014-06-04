@@ -70,19 +70,19 @@ We’re all here as part of the greater web community, interested in finding, cr
 
 In fact, the more members of your team that can be involved in the push from development to production, the better. This allows that many more incremental improvements without a central gatekeeper.
 
-## what does this entail?
+## What does this entail?
 
 Ok. I’m getting to the point.
 
 What does all of this entail? How do you create a workflow that gets things from development to production in a painless, carefree manner?
 
-There are 4 parts. Each shares 2 key pieces.
+There are 4 parts. Each part shares 2 key pieces.
 
-Version Control, Provisioning, Deployment, Testing
+Parts: Version Control, Provisioning, Deployment, Testing
 
 Throughtout these four parts, as a whole and individually, we should focus on two things.
 
-Establish a workflow. Include everyone.
+Pieces: Establish a workflow. Include everyone.
 
 Let's get into it.
 
@@ -96,7 +96,7 @@ Not only does verion control give you the ability to maintain a log of what has 
 
 Before you can get started with version control as part of your workflow, you should decide which type of version control to use.
 
-The two most popular packages now are Git and SVN.
+Version control has a storied history that's completely worth reading. The two most popular packages now are Git and SVN.
 
 ### Git or SVN
 
@@ -106,7 +106,7 @@ Git and SVN are the big ones, and the choice should be made carefully and early.
 
 Of course, you aren't really choosing between Git and SVN at this point. Your choosing between distributed and centralized.
 
-### distributed or centralized
+### Distributed or Centralized
 
 Distributed version control, which Git is, means that everyone on your team has a full copy of the repository's history's checked out to their machine. They can create branches and commit code and screw things up and fix them without anyone else ever seeing the work. They can also share the work constantly through the use of a common repository such as github. As multiple people contribute multiple branches of code, things can be merged together to form a common history that creates the product,
 
@@ -146,41 +146,69 @@ This gets a bit tough. The best way to use Git is at the command line. If you're
 
 ## Provisioning
 
-Provisioning is another very important part of a development workflow, and this is often the one that stands out a bit as something not every developer is familiar with.
+Provisioning is the next important part of a development workflow. This is often the one that stands out a bit as something not every developer is familiar with.
 
-Provisioning allows us to describe the story of the machine every time a fresh box is booted. And this is the key—provisioning can happen in production AND in development. When done right, it gives everybody on the team access to a local development environment that comes with everything we expect from production.
+Provisioning allows us to describe the state of a machine. Every time a fresh box is booted in production and development, this state is applied. When done right, it gives everybody on the team access to a local environment that provides everything we expect from production.
 
-This means no more hours lost to tracking down caching bugs, or trying to find a matching config in nginx while we run Apache on our local machine.
+This means fewer lost hours tracking down caching bugs or trying to troubleshoot how a site is operating in Nginx while we run Apache on our local machines.
 
-Much of this also depends on the structure of your web team and how it aligns with IT at the University. Hopefully everybody can get on board with the idea, as it makes server management and development an easier task.
+This does depend on the structure of your web team and how it alings with IT. If everybody is on board with the idea, it makes both server management and development an easier task. In many cases, it would be music to a system admin's ears to hear that you're interested in provisioning a local environment to match production.
 
-Having access to a server provides great power. You can install whatever you want to get the job done. While this is cool, it doesn't do much for us if we have to install all of the server software every time that we boot the machine.
-
-And the best reason?
+Of course, the best reason to formalize your provisioning?
 
 ### Version Control
 
-Formal provisioning allows you to version control your environment.
+Formal provisioning allows you to version control your environment. And this is so useful.
 
-This is actually the first thing I started with when building the WSUWP Platform. I needed a server before I could write code for it.
+This is actually the first thing I started with when building the WSUWP Platform. I needed a server before I could write code for it, so I started with provisoning before a line of code was written.
+
+Now, over time I can see how the server configuration has changed. When we upgraded from Nginx 1.6 to 1.7. When that strange issue with PHP 5.5.12 required a change in www.conf.
+
+Which brings up a good point. Version control may not be the best reason. The best reason may be that by having a local version of production provisioning, I was able to realize that PHP 5.5.12 caused an issue with our curreng server configs on my local machine - this MBA - before anything was accidently deployed to production.
+
+I could go on, it really is cool stuff.
 
 ### How to create production
 
 The first step to creating a production environment, which will also turn into your development environment is to pick a provisioner. There are many out there, but a few stand out.
 
-Salt - 
+As with many things, the one you pick is likely the right answer. As long as you establish your workflow and commit to it.
 
-Puppet - 
+#### Salt
 
-Chef - 
+* "Salt delivers a dynamic communication bus for infrastructures that can be used for orchestration, remote execution, configuration management and much more."
+* I clicked with Salt almost immediately, where as I was always confused when digging into Puppet and Chef. Granted, I was also looking for some instant gratification, so your mileage may vary. I really do enjoy the YAML style configuration offered by Salt.
+* It is an exteremly active open source project, so you'll want to keep an eye on some changes. I think it has grown a bit more stable as of late.
 
-Bash scripting.
+#### Puppet
 
-When in doubt, a provisioning method is better than no provisioning method. Salt, Puppet, Chef, and the others can involve some time to get familiar with and get buy-in. Nothing hurts though, so having a list of bash scripts available would go along way.
+* "Puppet Open Source is a flexible, customizable framework available under the Apache 2.0 license designed to help system administrators automate the many repetitive tasks they regularly perform."
+* A bunch of devops use and enjoy Puppet. I haven't had a chance to wrap my mind around the structure completely. It is different in that states are described with more of a Puppet specific language.
 
-### how this mirrors development
+#### Chef
 
-#### vagrant
+* "Chef is a systems and cloud infrastructure automation framework that makes it easy to deploy servers and applications to any physical, virtual, or cloud location, no matter the size of the infrastructure. "
+* Chef is the one I have the least experience with. Per Chef, they approach infrastructure as code. Configuration, as far as I understand it, is done in Ruby. I have a feeling that if you're strong in Ruby, you'll have no problems adapting to Chef.
+
+#### Others
+
+There are others, Ansible comes to mind immediately as something that was very easy to get up and running with. http://en.wikipedia.org/wiki/Comparison_of_open-source_configuration_management_software
+
+And there's always bash scripting. When in doubt, have common tasks scripted out so that you can boot up a server and run a few commands rather than walking through the full install every time. A provisioning method is better than no provisioning method. Salt, Puppet, Chef, and the others can involve some time to get familiar with and get buy-in.
+
+### How this mirrors development
+
+So that was a bunch of info on getting a production environment up and running with provisioning scripts. How does that relate to development?
+
+#### Vagrant
+
+This is where magic comes in.
+
+Vagrant is MIT licensed open source software for “creating and configuring lightweight, reproducible, and portable development environments.”
+
+Vagrant gives you a method to apply provisioning scripts to a virtual machine that exists on your local computer. Through virtualization software such as VirtualBox, this machine can live for years or be wiped out within minutes—all without affecting anything on your actual system.
+
+The most important part—both Vagrant and VirtualBox are cross platform. This lowers barriers for any member of your web team as OSX, Windows, and Linux users can develop in the same common environment.
 
 ### Establish a Workflow
 
