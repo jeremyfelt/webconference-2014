@@ -40,29 +40,27 @@ To constantly ship, we should rely on rapid, incremental improvements.
 
 Many small enhancements will go unnoticed by many people. Large features will be broken down into smaller pieces that can be tested individually before being combined as part of a major effort. Bugs introduced into the system will have smaller effects.
 
+## Workflow... Getting from Development to Production
+
 For this to work, a clean and clear workflow must exist. Development should be a mirror of production that everyone can work with.
 
-## Workflow... Development -> Production
+Defining this workflow is the most important part.
 
-Defining a workflow is the most important part.
-
-Everything we’re covering here involves buy-in from your team (and from you).
-
-In order for everyone to stay sane, an established workflow must exist. Even if you are the sole developer, designer, and content creator for a site, you’ll benefit from a solid workflow.
+Everything we’re covering here involves buy-in from your team (and from you). In order for everyone to stay sane, an established workflow must exist. Even if you are the sole developer, designer, and content creator for a site, you’ll benefit.
 
 ## Development vs Production
 
 Let's assign some quick definitions to these environments.
 
-Development is local and individual. You can break it at will. There are extra debug tools, build tools, and deploy tools. Everything you are working with is usually at the bleeding edge of your project rather than in a long term stable state.
+Development is local and individual. You can break it at will.
+
+There are extra debug tools, build tools, and deploy tools. Everything you are working with is usually at the bleeding edge of your project rather than in a long term stable state.
 
 Production is central and shared. It is clean and if you break it, you buy it.
 
-A development environment allows everyone to do whatever they want in the common goal of maintaining a stable and happy production environment.
+A development environment allows everyone to do whatever they want in the common goal of maintaining a stable and happy production environment. A production environment continues producing.
 
 I'm purposely leaving out staging at this point, as it introduces additional complexities. I personally think that content can be staged in production in most cases. That said, if you need a staging area for QA, that should exist as part of the workflow and likely be as close to production as possible.
-
-Create in a development environment and push to a production environment.
 
 ## Who are you?
 
@@ -80,17 +78,23 @@ In fact, the more members of your team that can be involved in the push from dev
 
 ## What does this entail?
 
-Ok. I’m getting to the point.
-
 What does all of this entail? How do you create a workflow that gets things from development to production in a painless, carefree manner?
 
-There are 4 parts. Each part shares 2 key pieces.
+There are four parts. Each part shares two key pieces.
 
-Parts: Version Control, Provisioning, Deployment, Testing
+Parts:
+
+	* Version Control
+	* Provisioning
+	* Deployment
+	* Testing
 
 Throughtout these four parts, as a whole and individually, we should focus on two things.
 
-Pieces: Establish a workflow. Include everyone.
+Pieces:
+
+	* Establish a workflow.
+	* Include everyone.
 
 Let's get into it.
 
