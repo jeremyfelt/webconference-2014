@@ -251,17 +251,49 @@ The next step is getting everyone working on a virtual machine rather than on pr
 
 Deployment is the act of getting things into production. In our case, it's specifically getting things that have been tagged as stable in our version control system into production.
 
-There are so many ways of doing this, so the best answer is a combination of things.
+There are so many ways of doing this, so the best answer is often a combination of things depending on where your code is stored and what is required as part of a build process.
 
-#### git, grunt, fabric, bash, rsync
+### Painless, then seamless.
 
-### Make it painless, then makeit seamless.
+First strive toward making it painless. Have a process laid out where a happens, then b happens, and then c causes d to happen. Once it feels like it's getting painless, start working so that it's seamless. Try to merge steps b, c, and d into a as appropriate. It's a happy day when you can trigger one action that sets off the series of tasks and deploys your code to production.
 
-### Start small, spread out.
+### Git hooks
+
+Git has a series of hooks available in your project's `.git/hooks/` directory. There are a couple ways you can go here.
+
+A pre-receive or post-receive hook on the server will allow you to specify commands to run on the server whenever a push is made to that repository.
+
+A pre-commit or post-commit hook on your local machine will allow you to specify commands that will run locally.
+
+### Grunt
+
+Grunt is a task manager. This can be extremely useful for defining a series of tasks that need to be processed in order to build either a development or production version of your project.
+
+This could be used in combination with Git hooks or on its own entirely. Typing `grunt production` may compile or build all of the files you need in production and then route them to the proper location.
+
+### Fabric
+
+"Fabric is a Python library and command-line tool for streamlining the use of SSH for application deployment or systems administration tasks."
+
+Really, it's a nice way of defining a few bash tasks in python so that you can do things locally like `fab push_production` and have it just work.
+
+This is powerful in that it provides some easy methods for connection to a remote server over SSH as a specific user or with SUDO.
+
+If you find yourself writing a lot of Bash scripts as part of your deploy process, you may want to look into Fabric as a way to manage them.
 
 ### Version control
 
+And of course, just like your code and just like provisioning, keep all of your deployment scripts under version control as much as possible. It's so nice to know when things have changed or to have a record available for going back to see why things were changed.
+
 ### Rollback Ability
+
+With everything version controlled, especially in your code and provisioning, the concept of a rollback becomes easier to grasp. This is the goal to strive for after making your deployment painles and seamless—picking a point in a project's history and deploying to that moment.
+
+You'll likely have trouble going too far back with provisioning, as software packages on servers would be really annoying to go back more than a version or to. But your code is more than likely flexible enough to handle that shift backwards.
+
+Ideally, it should be possible to tag version 1.0.1 and have it appear in production. And if something catastrophic happens and you need to revert, it should be possible to issue one command and have production go back to 1.0.0 or 0.9.5 or whatever you've specified.
+
+The only concern outside of code at this point becomes database and content related.
 
 ### Establish a Workflow
 
