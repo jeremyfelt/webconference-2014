@@ -14,27 +14,29 @@ All of our work is open source. If you're interested in collaboration of any kin
 
 ## the future friendly web
 
-Before we get into things, I want to address how managing environments fits with the tagline on this year’s Web Conference.
+I want to address how managing environments fits with the tagline on this year’s Web Conference.
 
 “The Future Friendly Web”
 
-That’s a pretty broad statement, which is useful because it can generate broad conversation. In fact, it's possible that everyone in this room has a different way of defining “future friendly” in this context.
+That’s a pretty broad statement. This is useful because it can generate broad conversation. It's possible that everyone in this room has a different way of defining “future friendly” in this context.
 
-One thought may be to build the web in a way so that when left untouched for years, it will still work. Browsers will change, standards will change, but that piece of content you put on the web continues to serve its purpose.
+My first thought was building the web in a way that when left untouched for years would still work. Browsers will change, standards will change, but that piece of content you put on the web continues to serve its purpose.
 
-Another possible way of thinking is that a future friendly web is one that changes when you want it to.
+Another way of thinking is that a future friendly web is one that changes when you want it to.
 
 ## the future friendly web changes when you want it to
 
-So often our hands are tied by factors out of our control. Whether it be internal politics or learning curves or large meetings that make it hard to come to decisions. Many things can be stubborn in the way of progress.
+So often our hands are tied by factors out of our control.
+
+Whether internal politics, learning curves, or large meetings that make it hard to come to decisions—many things can be stubborn in the way of progress.
 
 The longer things sit, the more things change around them. The more things change around them, the harder it is to change when the time comes.
 
-On the other hand, when continuous changes are being made, there is no easy opportunity to prevent change from happening or to be scared of what a large rewrite would look like if you are constantly shipping.
+On the other hand, if we focus on continuous change and are constantly shipping, there is no easy opportunity to prevent change from happening or to be scared of what a large rewrite would look like.
 
 ## Rapid Incremental Improvements
 
-To constantly ship, we’ll should rely on rapid, incremental improvements.
+To constantly ship, we should rely on rapid, incremental improvements.
 
 Many small enhancements will go unnoticed by many people. Large features will be broken down into smaller pieces that can be tested individually before being combined as part of a major effort. Bugs introduced into the system will have smaller effects.
 
