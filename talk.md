@@ -4,7 +4,13 @@ Hello everyone. Welcome to “Managing the Environment”
 
 ## @jeremyfelt
 
-My name is Jeremy Felt. I'm a senior WordPress engineer with University Communications at Washington State University. I moved form Portland, OR to Pullman, WA about a year ago to fill this position and have been having a great time working for higher ed. We're working on building out a nice publishing platform for everyone at the University based on WordPress. All of our work is open source. If you're interested in collaboration of any kind, find me.
+http://wp.wsu.edu
+
+My name is Jeremy Felt. I'm a senior WordPress engineer with University Communications at Washington State University. I moved from Portland, OR to Pullman, WA about a year ago to fill this position and have been enjoying working for the University.
+
+I'll refer to our WSUWP Platform project a few times during the talk as many of these lessons have been shaped during its creation. We're right around the corner from launching our 1.0 of a central publishing platform built on WordPress.
+
+All of our work is open source. If you're interested in collaboration of any kind, find me.
 
 ## the future friendly web
 
