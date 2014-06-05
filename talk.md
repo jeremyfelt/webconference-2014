@@ -370,12 +370,10 @@ If nothing else, this makes the web team more approachable. It gets everybody co
 
 ## Trust
 
-You've hopefully noticed a common thread throughout each of these. Establishing a workflow and then including everyone is important. This establishes trust within your team. This trust is important in order to maintain an overall project workflow of rapid, incremental, improvements.
+We've covered Version Control, Provisioning, Deployment, and Testing. Each of these have shared a common thread - establish a workflow and then include everyone.
 
-### Establish a Workflow
-### Include Everyone
+Doing this creates trust within and outside your team. This trust is important in order to maintain a project flow that is always changing.
 
+If you can get comfortable - and if you can get others comfortable - with the process used to create and push code... rapid, incremental improvements will follow.
 
-## Wrap Up
-
-## Fin
+## Thank You!
