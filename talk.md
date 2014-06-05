@@ -297,10 +297,36 @@ The only concern outside of code at this point becomes database and content rela
 
 ### Establish a Workflow
 
+And again. Establish a workflow.
+
+* Who can deploy code to the server?
+* When should code be deployed to the server?
+* What should be done to ensure deployment was successful?
+* How can we rollback?
+
 ### Example Workflow
 
+I'm starting to reach the point of painless in our configuration. I think seamless is close, and rollback will be available soon for some things.
+
+Right now deployments for our WSUWP Platform occur in two different ways.
+
 #### Theme deployment via GitHub webhook
-#### pre-receive hooks for other deployment
+
+First, any WordPress themes that we have available in public GitHub repositories are deployed whenever a new version is tagged. We developed a WordPress plugin that manages the webhook calls from GitHub and fires off the scripting on the server necessary for getting theme files in the right place.
+
+The plugin also logs each of these deployment instances so that we have a history of what has happened and who has deployed. At this point, anybody on the team has the ability to deploy new changes to any themes on the platform.
+
+We're very close on rollback ability here as the script is configured to checkout a specific tag from version control.
+
+#### WSUWP Platform deployment via pre-receive hook
+
+The platform itself is currently deployed through a pre-receive hook, though I do create a new tag each time that it is deployed.
+
+Everyone's local repository contains an "origin" remote that points to GitHub and a "deploy" remote that points to the server. `git push origin master` pushes the master branch to GitHub and `git push deploy master` initiates a push to the master branch on the server.
+
+Because this is a pre-receive hook, I have a bare git repository on the server that catches the request and fires off a bash script to pull down the latest changes before running Grunt to build the various themes and plugins that we're using into something that then gets put into production.
+
+We're very close to having this work on the same system themes are on. So in the end, the deploy system will have the ability to deploy itself, which seems pretty cool.
 
 ### Include Everyone
 
@@ -314,15 +340,33 @@ If possible, integrate deployment steps into other parts of the workflow. As I s
 
 ## Testing
 
+So I'm not going to talk about test driven development as it's not something we're currently taking advantage of.
+
+This is your standard testing. Being aware of when things are deployed to production and how to determine if problems have been created. After a while there are so many different possibilities hanging out there throughout the sites of the University that nothing beats actual page loads for testing results.
+
 ### Keep an ear to the ground
+
+Keep your eyes and ears open. If you deploy a new version of a project and then run out to get coffee and somebody mentiones something they just noticed, run it through your mental checks as something you may have possibly caused. This is unlikely to happen, though becomes more likely as more time passes after a deploy.
 
 ### Watch THOSE sites
 
+Those sites exist. The ones that you know are high visibility flagship projects or high funded initiatives. There should be a handful of sites that you have ready to load any time its applicable. Push out a change to the platform, load those sites. Brief power outage, load those sites.
+
+There are some pretty cool tools out there for automated visual regression testing that I'd like to harness in the future to have a constant eye on those sites. Nothing beats your eyes though.
+
 ### Be a constant user
 
-### watch your logs
+And because nothing beats your eyes, be a constant user.
+
+If you can be involved in the day to day use of the type of site you're creating, then you'll have an easier time finding bugs before they come up for others and for detecting features that you may want to start planning for now.
 
 ### Include Everyone
+
+And of course, especially with testing, include everyone. This doesn't mean only members of your team, but everyone in the University. Make sure that the channels of communicaton are clear so that both minor and major issues can make their way to you as necessary.
+
+One of the best things we've done recently at WSU is open lab hours on Friday mornings. I read this great article by Michelle Tarby (http://higheredsolo.com/newmodel/) on the open labs they started at Le Moyne College in Syracuse and fell in love with the idea immediately. We've had 5 sessions and each has generated some great discussion about current features, desired features, possible bugs, and the web in general. I take notes throughout the session and then post recaps to give everyone an idea of what we covered. http://web.wsu.edu/openlab/
+
+If nothing else, this makes the web team more approachable. It gets everybody comfortable with the things that we're doing centrally and allows us to continue pushing changes.
 
 ## Trust
 
