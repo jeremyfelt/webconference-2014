@@ -4,13 +4,13 @@ Hello everyone. Welcome to “Managing the Environment”
 
 ## @jeremyfelt
 
-http://wp.wsu.edu
+My name is Jeremy Felt. I'm a senior WordPress engineer with University Communications at Washington State University. I moved from Portland, OR to Pullman, WA about a year ago to fill this position and have enjoyed my introduction to University employment.
 
-My name is Jeremy Felt. I'm a senior WordPress engineer with University Communications at Washington State University. I moved from Portland, OR to Pullman, WA about a year ago to fill this position and have been enjoying working for the University.
+WSUWP Platform http://wp.wsu.edu (setup a redirect)
 
-I'll refer to our WSUWP Platform project a few times during the talk as many of these lessons have been shaped during its creation. We're right around the corner from launching our 1.0 of a central publishing platform built on WordPress.
+I'll refer to our WSUWP Platform project a few times today as many of these lessons have been shaped during its creation. We're right around the corner from shipping version 1.0 of a central publishing platform for the university built on WordPress.
 
-All of our work is open source. If you're interested in collaboration of any kind, find me.
+All of our work is open source. We'd love to collaborate with others on the problems we're solving. If you're interested at all, please speak up at some point.
 
 ## the future friendly web
 
@@ -28,25 +28,27 @@ Another way of thinking is that a future friendly web is one that changes when y
 
 So often our hands are tied by factors out of our control.
 
-Whether internal politics, learning curves, or large meetings that make it hard to come to decisions—many things can be stubborn in the way of progress.
+Whether it be internal politics, technological learning curves, or large meetings that make it hard to come to decisions—many things can prove stubborn in the way of progress.
 
 The longer things sit, the more things change around them. The more things change around them, the harder it is to change when the time comes.
 
-On the other hand, if we focus on continuous change and are constantly shipping, there is no easy opportunity to prevent change from happening or to be scared of what a large rewrite would look like.
+On the other hand, if we focus on continuous change and are constantly shipping new work, there is no easy opportunity to prevent change from happening or to be scared of what a large rewrite would look like.
 
 ## Rapid Incremental Improvements
 
-To constantly ship, we should rely on rapid, incremental improvements.
+To constantly ship, we can rely on rapid, incremental improvements.
 
-Many small enhancements will go unnoticed by many people. Large features will be broken down into smaller pieces that can be tested individually before being combined as part of a major effort. Bugs introduced into the system will have smaller effects.
+* Many small enhancements will go unnoticed by many people.
+* Large features will be broken down into smaller pieces that can be tested individually before being combined as part of a major effort.
+* Bugs introduced into the system will have smaller effects.
 
 ## Workflow... Getting from Development to Production
 
-For this to work, a clean and clear workflow must exist. Development should be a mirror of production that everyone can work with.
+For this to work, a clean and clear workflow must exist. Development should be a mirror of production that everybody can work with.
 
 Defining this workflow is the most important part.
 
-Everything we’re covering here involves buy-in from your team (and from you). In order for everyone to stay sane, an established workflow must exist. Even if you are the sole developer, designer, and content creator for a site, you’ll benefit.
+Everything we’re covering here involves buy-in from your team (and from you). In order for everyone to stay sane, an established workflow must exist. Even if you are the sole developer, designer, and content creator for a site, you’ll benefit, you'll benefit from having a workflow.
 
 ## Development vs Production
 
@@ -54,17 +56,19 @@ Let's assign some quick definitions to these environments.
 
 Development is local and individual. You can break it at will.
 
-There are extra debug tools, build tools, and deploy tools. Everything you are working with is usually at the bleeding edge of your project rather than in a long term stable state.
+There may be extra debug tools, build tools, and deploy tools in your development environment. Everything you are working with is usually at the bleeding edge of your project rather than in a long term stable state.
 
 Production is central and shared. It is clean and if you break it, you buy it.
 
-A development environment allows everyone to do whatever they want in the common goal of maintaining a stable and happy production environment. A production environment continues producing.
+A development environment allows everyone to do whatever they want in the common goal of maintaining a stable and happy production environment.
 
-I'm purposely leaving out staging at this point, as it introduces additional complexities. I personally think that content can be staged in production in most cases. That said, if you need a staging area for QA, that should exist as part of the workflow and likely be as close to production as possible.
+A production environment always continues to produce.
+
+As a side note, I'm purposely leaving out staging at this point. Staging environments introduce additional complexities that are often very specific to an established workflow. I personally think that content can be staged in most production areas. That said, if you do need a staging area for QA, that should exist as part of the workflow and likely be as close to production as possible.
 
 ## Who are you?
 
-Ok. Now that we’ve laid some of the ground rules, let’s back up again.
+Ok. Now that we’ve laid some of the ground rules and definitions, let’s back up one more time.
 
 Who in the room would describe themselves as a developer?
 
@@ -72,7 +76,7 @@ Designer?
 Content creator?
 Manager?
 
-We’re all here as part of the greater web community, interested in finding, creating, and playing the roles necessary to making and maintaining a future friendly web. Though this talk on managing the development environment is targeted at developers who want to explore ways to expand workflow, the methods and lessons within very much apply to everyone.
+We’re all here as part of the greater web community. We're interested in finding, creating, and playing the roles necessary to making and maintaining a future friendly web. Though this talk on managing the development environment is targeted at mainly developers who want to explore ways to expand workflow, the methods and lessons within very much apply to everyone.
 
 In fact, the more members of your team that can be involved in the push from development to production, the better. This allows that many more incremental improvements without a central gatekeeper.
 
@@ -89,7 +93,7 @@ Parts:
 	* Deployment
 	* Testing
 
-Throughtout these four parts, as a whole and individually, we should focus on two things.
+Throughtout these four parts, as a whole and individually, we focus on two things.
 
 Pieces:
 
@@ -100,33 +104,31 @@ Let's get into it.
 
 ## Version Control
 
-The most important part of a development workflow is version control. This will be used to keep track of your code and likely some of your processes. At WSU we're currently using it to track our platform code, the provisioning for our servers, and our deployment scripts that get things to production.
+The most important part of a development workflow is version control.
 
------smiley------smiley------smiley-------sad Graph with a line back.
+This will be used to keep track of your code and likely some of your processes. At WSU we're currently using it to track our platform code, the provisioning for our servers, and our deployment scripts that get things to production. In some cases we even use it to version our documentation.
+
+### Slide -----smiley------smiley------smiley-------sad Graph with a line back.
 
 Not only does verion control give you the ability to maintain a log of what has happened—something you can reference when trying to determine when a bug was introduced or what the reasoning for an approach was—it allows you to rollback to any point in the history of your project and get a view of how exactly things worked.
 
 Before you can get started with version control as part of your workflow, you should decide which type of version control to use.
 
-Version control has a storied history that's completely worth reading. The two most popular packages now are Git and SVN.
-
 ### Git or SVN
 
-Does anyone in the room already use Git? How about SVN? Any other types of version control in use?
-
-Git and SVN are the big ones, and the choice should be made carefully and early. Once you choose one, that becomes the right answer. Embrace it.
+Version control has a storied history that's completely worth reading. The two most popular packages now are Git and SVN and the choice should be made carefully and early. Once you choose one, that becomes the right answer. You should feel comfortable embracing it.
 
 Of course, you aren't really choosing between Git and SVN at this point. Your choosing between distributed and centralized.
 
 ### Distributed or Centralized
 
-Distributed version control, which Git is, means that everyone on your team has a full copy of the repository's history's checked out to their machine. They can create branches and commit code and screw things up and fix them without anyone else ever seeing the work. They can also share the work constantly through the use of a common repository such as github. As multiple people contribute multiple branches of code, things can be merged together to form a common history that creates the product,
+Distributed version control, which Git is, means that everyone on your team has a full copy of the repository's history's checked out to their machine. They can create branches and commit code and screw things up and fix them without anyone else ever seeing the work. They can also share the work constantly through the use of a common central repository such as GitHub. As multiple people contribute multiple branches of code, things can be merged together to form a common history that creates the product.
 
-Centralized version control, SVN, is completely different. There is one repository. Everyone checks out a copy of the source from a specific point, but any commits must be pushed back to that central location so that everybody always has access to the same thing.
+Centralized version control, SVN, is completely different in its approach. There is one repository. Everyone checks out a copy of the source from a specific point, but any commits must be pushed back to that central location so that everybody always has access to the same thing.
 
-There arguments for and against both models. While centralized version control can make things difficult to work with as you rely on that central connection, decentralized can also create scenarios where large swaths of work are done as lone developers—possibly unwilling to show our unfinished work.
+There are arguments for and against both models. While centralized version control can make things difficult to work with as you rely on that central connection, decentralized can also create scenarios where large swaths of work are done as lone developers—possibly unwilling to show our unfinished work.
 
-Having used both fairly extensively, I'm a bigger fan of the distributed model. If for no other reason than having the ability to commit code anywhere and to really go down an experimental path without having to worry if I'm affecting the work of others,
+Having used both fairly extensively, I'm currently a bigger fan of the distributed model. If for no other reason than having the ability to commit code anywhere—like an airplane or other place with limited Internet connectivity. I also enjoy going down an experimental path from time to time without having to worry if I'm affecting the work of others,
 
 ### Establish a Workflow
 
@@ -152,15 +154,17 @@ http://nvie.com/posts/a-successful-git-branching-model/
 
 ### Include everyone
 
-Your version control is only as good as how you use it. It will benefit everyone on your team if everyone became familiar with the concepts and started using it for projects. Being aware of how code gets to production is the first step. Having a method to contribute to that flow is the second.
+Include everyone.
 
-This gets a bit tough. The best way to use Git is at the command line. If you're on GitHub, a cross platform app is available, but does a very poor job of encouraging best version control practices. I would recommend teaching some command line basics first so that everybody is on the first page together. It would be helpful to aid in creating workflows using other apps as well.
+Your version control is only as good as how you use it. It will benefit everyone on your team if everyone becomes familiar with the concepts and starts using them for projects. Being aware of how code gets to production is the first step. Having a method to contribute to that flow is the second.
+
+Now this gets a bit tough. The best way to use Git is at the command line. If you're on GitHub, a cross platform app is available, but does a very poor job of encouraging best version control practices. I would recommend teaching some command line basics first so that everybody is on the first page together. It would be helpful to aid in creating workflows using other apps as well so that everyone can use what they're comfortable with.
 
 ## Provisioning
 
 Provisioning is the next important part of a development workflow. This is often the one that stands out a bit as something not every developer is familiar with.
 
-Provisioning allows us to describe the state of a machine. Every time a fresh box is booted in production and development, this state is applied. When done right, it gives everybody on the team access to a local environment that provides everything we expect from production.
+Provisioning allows us to describe the state of a machine. Every time a fresh box is booted in production and development, a state is applied. When done right, it gives everybody on the team access to a local environment that provides everything we expect from production.
 
 This means fewer lost hours tracking down caching bugs or trying to troubleshoot how a site is operating in Nginx while we run Apache on our local machines.
 
@@ -174,39 +178,38 @@ Formal provisioning allows you to version control your environment. And this is 
 
 This is actually the first thing I started with when building the WSUWP Platform. I needed a server before I could write code for it, so I started with provisoning before a line of code was written.
 
-Now, over time I can see how the server configuration has changed. When we upgraded from Nginx 1.6 to 1.7. When that strange issue with PHP 5.5.12 required a change in www.conf.
+Now, over time I can go back and see how the server configuration has changed. When we upgraded from Nginx 1.6 to 1.7. When that strange issue with PHP 5.5.12 required a change in www.conf. When we addressed Heartbleed and the recent OpenSSL security vulnerabilities from last week.
 
-Which brings up a good point. Version control may not be the best reason. The best reason may be that by having a local version of production provisioning, I was able to realize that PHP 5.5.12 caused an issue with our curreng server configs on my local machine - this MBA - before anything was accidently deployed to production.
-
-I could go on, it really is cool stuff.
+Which brings up a good point. Version control may not be the best reason for formalized provisioning. The best reason may be that by having a local version of production provisioning, I was able to realize that PHP 5.5.12 caused an issue with our current server configs on my local machine - this MBA - before anything was accidently deployed to production.
 
 ### How to create production
 
 The first step to creating a production environment, which will also turn into your development environment is to pick a provisioner. There are many out there, but a few stand out.
 
-As with many things, the one you pick is likely the right answer. As long as you establish your workflow and commit to it.
+As with many things, the one you pick is likely the right answer as long as you establish your workflow and commit to it.
 
 #### Salt
 
 * "Salt delivers a dynamic communication bus for infrastructures that can be used for orchestration, remote execution, configuration management and much more."
-* I clicked with Salt almost immediately, where as I was always confused when digging into Puppet and Chef. Granted, I was also looking for some instant gratification, so your mileage may vary. I really do enjoy the YAML style configuration offered by Salt.
-* It is an exteremly active open source project, so you'll want to keep an eye on some changes. I think it has grown a bit more stable as of late.
+* I clicked with Salt almost immediately, where as I was always confused when digging into Puppet and Chef. Granted, I was also looking for some instant gratification, so your mileage may vary. I really do enjoy the YAML style configuration offered by Salt. You describe configurations and states in nice, clean to read and easy to edit files and run Salt to fire everything off.
+* It is an exteremly active open source project, so you'll want to keep an eye on some changes. At the beginning, there was frequently some breakage that would require small adjustements. I think it has grown a bit more stable as of late.
 
 #### Puppet
 
 * "Puppet Open Source is a flexible, customizable framework available under the Apache 2.0 license designed to help system administrators automate the many repetitive tasks they regularly perform."
 * A bunch of devops use and enjoy Puppet. I haven't had a chance to wrap my mind around the structure completely. It is different in that states are described with more of a Puppet specific language.
+* 
 
 #### Chef
 
 * "Chef is a systems and cloud infrastructure automation framework that makes it easy to deploy servers and applications to any physical, virtual, or cloud location, no matter the size of the infrastructure. "
-* Chef is the one I have the least experience with. Per Chef, they approach infrastructure as code. Configuration, as far as I understand it, is done in Ruby. I have a feeling that if you're strong in Ruby, you'll have no problems adapting to Chef.
+* Chef is the one I have the least experience with. Per Chef, they approach infrastructure as code. Configuration, as far as I understand it, is done in Ruby. I have a feeling that if you're strong in Ruby, you'll have no problems adapting to the structures laid out by Chef.
 
 #### Others
 
 There are others, Ansible comes to mind immediately as something that was very easy to get up and running with. http://en.wikipedia.org/wiki/Comparison_of_open-source_configuration_management_software
 
-And there's always bash scripting. When in doubt, have common tasks scripted out so that you can boot up a server and run a few commands rather than walking through the full install every time. A provisioning method is better than no provisioning method. Salt, Puppet, Chef, and the others can involve some time to get familiar with and get buy-in.
+And there's always bash scripting. When in doubt, have common tasks scripted out so that you can boot up a server and run a few commands rather than walking through the full install every time. Any provisioning method is better than no provisioning method. Salt, Puppet, Chef, and the others can involve some time to get familiar with.
 
 ### How this mirrors development
 
@@ -218,9 +221,11 @@ This is where magic comes in.
 
 Vagrant is MIT licensed open source software for “creating and configuring lightweight, reproducible, and portable development environments.”
 
-Vagrant gives you a method to apply provisioning scripts to a virtual machine that exists on your local computer. Through virtualization software such as VirtualBox, this machine can live for years or be wiped out within minutes—all without affecting anything on your actual system.
+Vagrant gives you the ability to boot a virtual machine—a server—in a headless state through virtualization software such as VirtualBox or VM Ware. This machine can live for years or be wiped out within minutes—all without affecting anything on your local system.
 
-The most important part—both Vagrant and VirtualBox are cross platform. This lowers barriers for any member of your web team as OSX, Windows, and Linux users can develop in the same common environment.
+Because this virtual machine is effectively a server, we can run the same provisiong scripts on it that we do our machines in production, which are also some sort of virtual machine themselves. Vagrant includes support for provisioners such as Puppet, Chef, and Salt. You can also initiate your own processes.
+
+The most important part—both Vagrant and VirtualBox are cross platform and open source. This lowers barriers for any member of your web team as OSX, Windows, and Linux users can develop in the same common environment.
 
 ### Establish a Workflow
 
@@ -228,7 +233,8 @@ As with version control, having a formal provisioning process is most useful whe
 
 * When should provisioning run on production?
 * How long should provisioning be tested in development?
-* Should provisioning include debug tools in development?
+* Should provisioning include debug tools in development? Or should it mirror production exactly.
+* Who should run provisioning on production?
 
 ### Example Workflow
 
@@ -238,26 +244,26 @@ So my daily workflow, almost the first thing I do when I walk in in the morning,
 
 This fires my virtual machine up and starts all of the services I need to develop locally.
 
-I subscribe to updates on packages like PHP and Nginx, so I'm often aware when a new release is available and if it includes updates that we should look at for production. At this point, I'll run `vagrant provision` to have my local machine go through the same provisioning that would occur on production.
+I subscribe to updates on various packages like PHP and Nginx, so I'm often aware when a new release is available and if it includes updates that we should look at for production. At this point, I'll run `vagrant provision` to have my local machine go through the same provisioning that would occur on production.
 
-If this all completes successfully and the project is working as expected, then I connect to the production machine and issue two commands.
+And if all this completes successfully and the project is working as expected, I connect to the production machine and issue two commands.
 
-1. Pull down the latest provisioning configuration.
-2. Run Salt.
+1. `sh prep.sh` - Pull down the latest provisioning configuration.
+2. `sh salt.sh` - Run Salt.
 
-Really, this could be simplified into one step and it could automatically happen based on a trigger in our version control setup, but I'm still in the phase of paying close attention.
+Really, this could be simplified into one step and it could automatically happen based on a trigger in our version control setup, but I'm still in the phase of paying close attention to any possible errors that could appear.
 
-What's beautiful is that even when doing a large update - like recompiling Nginx 1.7.1 from source last week - the web server only blips for a couple seconds during provisioning.
+What's beautiful is that even when doing a large update - like recompiling Nginx 1.7.1 and OpenSSL 1.0.1h from source last week - the web server only blips for a couple seconds during provisioning.
 
 And if something was to blow up completely, only a few commands and about 5-10 minutes stand in the way of having a working server up and running again.
 
 ### Include Everyone
 
-Just like with version control, there's a learning curve here. But just like version control, the more the team is familiar with the workflow, the larger benefit it will have on the team as a whole. It's kind of like knowing where your food comes from.
+Just like with version control, there's a learning curve here. But also just like version control, the more the team is familiar with the workflow, the larger benefit it will have on the team as a whole. It's kind of like knowing where your food comes from.
 
 Being aware of the process, possibly from browsing documentation, is the first step. How the server gets to be how it is and how we mimic this locally.
 
-The next step is getting everyone working on a virtual machine rather than on production via FTP or through MAMP or XAMPP or some other development environment. I'm happy to have a crew of people using Vagrant now at WSU that avoided the terminal at all costs before. As long as you're familiar with some of the basics and have a support path available to you, everything is possible.
+The next step is getting everyone working on a virtual machine rather than on production via FTP or through MAMP or XAMPP or some other development environment. I'm happy to have a crew of people using Vagrant now at WSU that have historically avoided the terminal at all costs. As long as you're familiar with some of the basics and have a support path available to you, everything is possible.
 
 ## Deployment
 
@@ -267,15 +273,16 @@ There are so many ways of doing this, so the best answer is often a combination 
 
 ### Painless, then seamless.
 
-First strive toward making it painless. Have a process laid out where a happens, then b happens, and then c causes d to happen. Once it feels like it's getting painless, start working so that it's seamless. Try to merge steps b, c, and d into a as appropriate. It's a happy day when you can trigger one action that sets off the series of tasks and deploys your code to production.
+First strive toward making it painless. Have a process laid out where A happens, then B happens, and then C causes D to happen.
+
+Once it feels like it's getting painless, start working so that it becomes seamless. Try to merge steps B, C, and D into A as appropriate. It's a happy day when you can trigger one action that sets off the series of tasks and deploys your code to production.
 
 ### Git hooks
 
 Git has a series of hooks available in your project's `.git/hooks/` directory. There are a couple ways you can go here.
 
-A pre-receive or post-receive hook on the server will allow you to specify commands to run on the server whenever a push is made to that repository.
-
-A pre-commit or post-commit hook on your local machine will allow you to specify commands that will run locally.
+* A pre-receive or post-receive hook on the server will allow you to specify commands to run whenever a push is made to that repository.
+* A pre-commit or post-commit hook on your local machine will allow you to specify commands that will run locally.
 
 ### Grunt
 
@@ -301,7 +308,7 @@ And of course, just like your code and just like provisioning, keep all of your 
 
 With everything version controlled, especially in your code and provisioning, the concept of a rollback becomes easier to grasp. This is the goal to strive for after making your deployment painles and seamless—picking a point in a project's history and deploying to that moment.
 
-You'll likely have trouble going too far back with provisioning, as software packages on servers would be really annoying to go back more than a version or to. But your code is more than likely flexible enough to handle that shift backwards.
+You'll likely have trouble going too far back with provisioning, as software packages on servers would be really annoying to go back more than a version or two. But your code is more than likely flexible enough to handle that shift backwards.
 
 Ideally, it should be possible to tag version 1.0.1 and have it appear in production. And if something catastrophic happens and you need to revert, it should be possible to issue one command and have production go back to 1.0.0 or 0.9.5 or whatever you've specified.
 
@@ -342,7 +349,7 @@ We're very close to having this work on the same system themes are on. So in the
 
 ### Include Everyone
 
-The best deployment tools are those that everyone on your team can use. One of the common sticking points that I've run into is how much everybody enjoys cowboy coding. I've made changes to my CSS file, things look good, and I want to drag it to my shared drive on the server so that it's live.
+The best deployment tools are those that everyone on your team can use. One of the common sticking points that I've run into is how much everybody enjoys cowboy coding. "I've made changes to my CSS file, things look good, and I want to drag it to my shared drive on the server so that it's live."
 
 This just hurts.
 
@@ -362,9 +369,9 @@ Keep your eyes and ears open. If you deploy a new version of a project and then 
 
 ### Watch THOSE sites
 
-Those sites exist. The ones that you know are high visibility flagship projects or high funded initiatives. There should be a handful of sites that you have ready to load any time its applicable. Push out a change to the platform, load those sites. Brief power outage, load those sites.
+Those sites exist. The ones that you know are high visibility flagship projects or high funded initiatives. There should be a handful of sites that you have ready to load any time applicable. Push out a change to the platform, load those sites. Brief power outage, load those sites. Walk in the door in the morning, load these sites.
 
-There are some pretty cool tools out there for automated visual regression testing that I'd like to harness in the future to have a constant eye on those sites. Nothing beats your eyes though.
+There are some pretty cool tools out there for automated visual regression testing that I'd like to harness in the future to have a constant eye on those sites. But nothing beats your eyes.
 
 ### Be a constant user
 
