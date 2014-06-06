@@ -70,11 +70,7 @@ As a side note, I'm purposely leaving out staging at this point. Staging environ
 
 Ok. Now that we’ve laid some of the ground rules and definitions, let’s back up one more time.
 
-Who in the room would describe themselves as a developer?
-
-Designer?
-Content creator?
-Manager?
+I'm guessing there are a variety of folks in the room. A bunch of developers. Some would identify as designers, content creators, managers, etc..
 
 We’re all here as part of the greater web community. We're interested in finding, creating, and playing the roles necessary to making and maintaining a future friendly web. Though this talk on managing the development environment is targeted at mainly developers who want to explore ways to expand workflow, the methods and lessons within very much apply to everyone.
 
