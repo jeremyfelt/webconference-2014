@@ -162,7 +162,7 @@ Now this gets a bit tough. The best way to use Git is at the command line. If yo
 
 The next important part of a development workflow is provisioning. This is often the one that stands out a bit as something not every developer is familiar with.
 
-Provisioning allows us to describe the state of a machine. Every time a fresh box is booted in production and development, a state is applied. When done right, it gives everybody on the team access to a local environment that provides everything we expect from production.
+Provisioning allows us to describe the state of a machine. Every time a fresh box is booted in production or development, a state is applied. When done right, it gives everybody on the team access to a local environment that provides everything we expect from production.
 
 This means fewer lost hours tracking down caching bugs or trying to troubleshoot how a site is operating in Nginx while we run Apache on our local machines.
 
@@ -174,13 +174,13 @@ Of course, the best reason to formalize provisioning?
 
 Formal provisioning allows you to version control your environment. And this is so useful.
 
-This is actually the first thing I started with when building the WSUWP Platform. I needed a server before I could write code for it, so I started with provisoning before a line of code was written.
+This is actually the first thing I started with when building the WSUWP Platform. I needed a server before I could write code for it, so I started with provisioning before a line of code was written.
 
-Now, over time I can go back and see how the server configuration has changed. When we upgraded from Nginx 1.6 to 1.7. When that strange issue with PHP 5.5.12 required a change in www.conf. When we addressed Heartbleed and the recent OpenSSL security vulnerabilities from last week.
+Now I can go back and see how the server configuration has changed. When we upgraded from Nginx 1.6 to 1.7. When that strange issue with PHP 5.5.12 required a change in www.conf. When we addressed Heartbleed and the recent OpenSSL security vulnerabilities from last week.
 
-The best reason for formalized provisioning may be that by having a local version of production in a virtual machine, I was able to realize that PHP 5.5.12 caused an issue with our current server configuration while using my local machine - this MBA - before anything was accidently deployed to production.
+The best reason for formalized provisioning may be that by having a local version of production in a virtual machine, I was able to realize that PHP 5.5.12 caused an issue with our current server configuration while using my local machine - this MBA - before anything was accidentally deployed to production.
 
-Provides confidence - expand?
+This can do a lot in providing the confidence needed to be constantly shipping a product.
 
 ### How to create production
 
@@ -196,7 +196,7 @@ The first step to creating a production environment, which will also turn into y
 
 * "Puppet Open Source is a flexible, customizable framework available under the Apache 2.0 license designed to help system administrators automate the many repetitive tasks they regularly perform."
 * A bunch of devops use and enjoy Puppet. I haven't had a chance to wrap my mind around the structure completely. It is different in that states are described with more of a Puppet specific language.
-* 
+*
 
 #### Chef
 
@@ -205,9 +205,11 @@ The first step to creating a production environment, which will also turn into y
 
 #### Others
 
-There are others, Ansible comes to mind immediately as something that was very easy to get up and running with. http://en.wikipedia.org/wiki/Comparison_of_open-source_configuration_management_software
+There are others, Ansible comes to mind immediately as something that was very easy to get up and running with for some basic configuration management.
 
 And there's always bash scripting. When in doubt, have common tasks scripted out so that you can boot up a server and run a few commands rather than walking through the full install every time. Any provisioning method is better than no provisioning method. Salt, Puppet, Chef, and the others can involve some time to get familiar with.
+
+http://en.wikipedia.org/wiki/Comparison_of_open-source_configuration_management_software
 
 ### How this mirrors development
 
@@ -217,13 +219,13 @@ So that was a bunch of info on getting a production environment up and running w
 
 This is where magic comes in.
 
-Vagrant is MIT licensed open source software for “creating and configuring lightweight, reproducible, and portable development environments.”
+Vagrant is MIT licensed open source software for "creating and configuring lightweight, reproducible, and portable development environments."
 
-Vagrant gives you the ability to boot a virtual machine—a server—in a headless state on your computer through virtualization software such as VirtualBox or VM Ware. This machine can live for years or be wiped out within minutes—all without affecting anything on your local system.
+Vagrant gives you the ability to boot a virtual machine — a server — in a headless state on your computer through virtualization software such as VirtualBox or VM Ware. This machine can live for years or be wiped out within minutes—all without affecting anything on your local system.
 
-Because this virtual machine is effectively a server, we can run the same provisioning scripts on it that we do on our machines in production, which are often some sort of virtual machine themselves. Vagrant includes support for provisioners such as Puppet, Chef, and Salt. You can also initiate your own processes.
+Because this virtual machine is effectively a server, we can run the same provisioning scripts on it that we do on our machines in production, which are often some sort of virtual machine themselves. Vagrant includes support for provisioners we covered - Puppet, Chef, and Salt. You can also initiate your own processes inside the virtual machine when it boots.
 
-The most important part—both Vagrant and VirtualBox are cross platform and open source. This lowers barriers for any member of your web team as OSX, Windows, and Linux users can develop in the same common environment.
+What's really great is that both Vagrant and VirtualBox are cross platform and open source. This lowers barriers for any member of your web team as OSX, Windows, and Linux users can develop in the same common environment.
 
 ### Establish a Workflow
 
@@ -240,7 +242,7 @@ So my daily workflow, almost the first thing I do when I walk into the office, s
 
 `vagrant up`
 
-This fires my virtual machine up and starts all of the services I need to develop locally.
+This fires my up my virtual machine and starts all of the services I need to develop locally.
 
 I subscribe to updates on various packages like PHP and Nginx, so I'm often aware when a new release is available and if it includes updates that we should look at for production. At this point, I'll run `vagrant provision` to have my local machine go through the same provisioning that would occur on production.
 
@@ -300,7 +302,7 @@ If you find yourself writing a lot of Bash scripts as part of your deploy proces
 
 ### Version control
 
-And of course, just like code and just like provisioning, deployment scripts can also be kept under version control. It's so nice to know when things have changed or to have a record available for going back to see why things were changed.
+And of course, just like code and just like provisioning, deployment scripts can also be kept under version control. It's so nice to know when things have changed or to have a record available for going back to see why.
 
 ### Rollback Ability
 
@@ -308,7 +310,7 @@ With everything version controlled, especially in your code and provisioning, th
 
 You'll likely have trouble going too far back with provisioning, as software packages on servers would be really annoying to go back more than a version or two. But your code is more than likely flexible enough to handle that shift backwards.
 
-Ideally, it should be possible to tag version 1.0.1 and have it appear in production. And if something catastrophic happens and you need to revert, it should be possible to issue one command and have production go back to 1.0.0 or 0.9.5 or whatever you've specified.
+Ideally, it should be possible to tag version 1.0.1 and have it appear in production. If something catastrophic happens and you need to revert, it should be possible to issue one command and have production go back to 1.0.0 or 0.9.5 or whatever you've specified.
 
 The only concern outside of code at this point becomes database and content related. Ensuring that things aren't deleted or unexpectedly moved elsewhere.
 
