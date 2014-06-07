@@ -337,21 +337,23 @@ The plugin also logs each of these deployment instances so that we have a histor
 
 We're very close on rollback ability here as the deploy script is configured to checkout a specified tag from version control.
 
-#### WSUWP Platform deployment via pre-receive hook
+#### WSUWP Platform deployment via Git pre-receive hook
 
 The platform itself is currently deployed through a pre-receive hook, though I do create a new tag each time that it is deployed.
 
 Everyone's local repository contains an "origin" remote that points to GitHub and a "deploy" remote that points to the server. `git push origin master` pushes the master branch to GitHub and `git push deploy master` initiates a push to the master branch on the server.
 
-Because this is a pre-receive hook, I have a bare git repository on the server that catches the request and fires off a bash script to pull down the latest changes before running Grunt to build the various themes and plugins that we're using into something that then gets put into production.
+Because this is a pre-receive hook, I have a bare git repository on the server that catches the request and fires off a bash script to pull down the latest changes, run Grunt to build the platform with the various themes and plugins that we're using, and then sync those files into the production location.
 
 We're very close to having this work on the same system themes are on. So in the end, the deploy system will have the ability to deploy itself, which seems pretty cool.
 
 ### Include Everyone
 
-The best deployment tools are those that everyone on your team can use. One of the common sticking points that I've run into is how much everybody enjoys cowboy coding. "I've made changes to my CSS file, things look good, and I want to drag it to my shared drive on the server so that it's live."
+The best deployment tools are those that everyone on your team can use. One of the common sticking points that I've run into is how much everybody enjoys cowboy coding.
 
-This just hurts.
+"I've made changes to my CSS file, things look good, and I want to drag it to my shared drive on the server so that it's live."
+
+This hurts a little bit inside.
 
 At the same time, it's painless for the deployer. Possibly painful for everyone at a later time, but that moment is painless.
 
@@ -361,15 +363,21 @@ If possible, integrate deployment steps into other parts of the workflow. As sho
 
 So I'm not going to talk about test driven development as it's not something we're currently taking advantage of.
 
-This is your standard testing. Being aware of when things are deployed to production and how to determine if problems have been created. After a while there are so many different possibilities hanging out there throughout the sites of the University that nothing beats actual page loads for testing results.
+Instead, this is your standard use testing. Being aware of when things are deployed to production and how to determine if problems have been created. After a while there are so many different possibilities hanging out there throughout the sites of the University that nothing beats actual page loads for testing results.
 
 ### Keep an ear to the ground
 
-Keep your eyes and ears open. If you deploy a new version of a project and then run out to get coffee and somebody mentiones something they just noticed, run it through your mental checks as something you may have possibly caused. This is unlikely to happen, though becomes more likely as more time passes after a deploy.
+Keep your eyes and ears open. If you deploy a new version of a project and then run out to get coffee and somebody mentions something they just noticed, run it through your mental checklist as something that may have just been introduced. This is unlikely to happen, though becomes more likely as more time passes after a deploy.
 
 ### Watch THOSE sites
 
-Those sites exist. The ones that you know are high visibility flagship projects or high funded initiatives. There should be a handful of sites that you have ready to load any time applicable. Push out a change to the platform, load those sites. Brief power outage, load those sites. Walk in the door in the morning, load these sites.
+I couldn't think of a clever acronym, but I'm going to stick with all caps anyway. THOSE sites exist. The ones that you know are high visibility flagship projects or high funded initiatives. The central news or the President's site. There should be a handful of sites that you have ready to load any time applicable.
+
+Push out a change to the platform, load those sites.
+
+Brief power outage, load those sites.
+
+Walk in the door in the morning, load these sites.
 
 There are some pretty cool tools out there for automated visual regression testing that I'd like to harness in the future to have a constant eye on those sites. But nothing beats your eyes.
 
@@ -381,7 +389,7 @@ If you can be involved in the day to day use of the type of site you're creating
 
 ### Include Everyone
 
-And of course, especially with testing, include everyone. This doesn't mean only members of your team, but everyone in the University. Make sure that the channels of communicaton are clear so that both minor and major issues can make their way to you as necessary.
+And of course, especially with testing, include everyone. This doesn't mean only members of your team, but everyone in the University. Make sure that the channels of communication are clear so that both minor and major issues can make their way to you as necessary.
 
 One of the best things we've done recently at WSU is open lab hours on Friday mornings. I read this great article by Michelle Tarby (http://higheredsolo.com/newmodel/) on the open labs they started at Le Moyne College in Syracuse and fell in love with the idea immediately. We've had 5 sessions and each has generated some great discussion about current features, desired features, possible bugs, and the web in general. I take notes throughout the session and then post recaps to give everyone an idea of what we covered. http://web.wsu.edu/openlab/
 
