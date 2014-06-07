@@ -4,17 +4,15 @@ Hello everyone. Welcome to “Managing the Environment”
 
 ## @jeremyfelt
 
-My name is Jeremy Felt. I'm a senior WordPress engineer with University Communications at Washington State University. I moved from Portland, OR to Pullman, WA about a year ago to fill this position and have enjoyed my introduction to University employment.
+My name is Jeremy Felt. I'm a senior WordPress engineer with University Communications at Washington State University. I moved from Portland, OR to Pullman, WA about a year ago to fill this position and have been enjoying my introduction to University employment.
 
-WSUWP Platform http://wp.wsu.edu (setup a redirect to show on slide)
+I'll refer to our WSUWP Platform project a few times today as many of these lessons have been shaped during its creation. We're right around the corner from shipping version 1.0 of a central publishing platform built on WordPress for the University. The link up here - https://wp.wsu.edu/platform/ - will take you to the GitHub repository.
 
-I'll refer to our WSUWP Platform project a few times today as many of these lessons have been shaped during its creation. We're right around the corner from shipping version 1.0 of a central publishing platform built on WordPress for the University.
-
-Almost all of our work is open source and we're working toward abstracting WSU specific messaging so that any school can use it. We'd love to find others to collaborate with on the problems we're solving so if you're interested at all, it would be great to catch up over the next couple days.
+Almost all of our work is open source and we're working toward abstracting WSU specific messaging so that any school can use take advantage of the project. We'd love to find others to collaborate with on the problems we're solving so if you're interested at all, it would be great to catch up over the next couple days.
 
 ## the future friendly web
 
-I want to address how managing environments fits with the tagline on this year’s Web Conference.
+Ok. I want to address how managing environments fits with the tagline on this year’s Web Conference.
 
 “The Future Friendly Web”
 
@@ -28,9 +26,11 @@ My next thought was that a future friendly web is one that changes when you want
 
 So often our hands are tied by factors out of our control.
 
-Whether it be internal politics, technological learning curves, or large meetings that make it hard to come to decisions—many things can prove stubborn in the way of progress.
+Whether it be internal politics, technological learning curves, or large meetings that make it hard to make decisions—many things can prove stubborn in the way of progress.
 
-The longer things sit, the more things change around them. The more things change around them, the harder it is to change when the time comes.
+The longer things sit, the more things change around them.
+
+The more things change around them, the harder it is to change when the time comes.
 
 On the other hand, if we focus on continuous change and are constantly shipping new work, there is no easy opportunity to prevent change from happening or to be scared of what a large rewrite would look like.
 
@@ -38,11 +38,13 @@ On the other hand, if we focus on continuous change and are constantly shipping 
 
 To constantly ship, we can rely on rapid, incremental improvements.
 
-These increments allow us to make a few assertions:
+In doing so, we make a few assertions:
 
 * Many small enhancements will go unnoticed by many people.
-* Large features will be broken down into smaller pieces. These can be tested individually before being combined as part of a major effort.
-* Bugs introduced into the system will have smaller effects. These bugs will be found and resolved quicker in a release cycle.
+* Large features will be broken down into smaller pieces.
+	* These can be tested individually before being combined as part of a major effort.
+* Bugs introduced into the system will have smaller effects.
+	* These bugs will be found and resolved quicker in a release cycle.
 * For this to be successful, a clean and clear workflow must exist.
 * Development should be a mirror of production that everybody can work with.
 
@@ -50,7 +52,7 @@ These increments allow us to make a few assertions:
 
 Defining this workflow is the most important part.
 
-Everything we’re covering here involves buy-in from the team. In order for everyone to stay sane, an established workflow must exist. Even if you are the sole developer, designer, and content creator for a site, an established, defined workflow will be a benefit.
+Everything we’re covering here involves buy-in from the team. In order for everyone to stay sane, an established workflow must exist. Even if you are the sole developer, designer, and content creator for a site, having this workflow will be a benefit.
 
 ## Development vs Production
 
@@ -58,19 +60,13 @@ Let's assign some quick definitions to these environments.
 
 Development is local and individual. You can break it at will.
 
-There may be extra debug tools, build tools, and deploy tools in your development environment. Everything you are working with is usually at the bleeding edge of your project rather than in a long term stable state.
+There may be extra debug tools, build tools, and deploy tools in this environment that do not exist in production. Everything you are working with is often at the bleeding edge of your project rather than in a long term stable state.
 
 Production is central and shared. It is clean and if you break it, you buy it.
 
 A development environment allows everyone to do whatever they want in the common goal of maintaining a stable and happy production environment.
 
 A production environment always continues to produce.
-
-## Who are you?
-
-We’re all here as part of the greater web community. We're interested in finding, creating, and playing the roles necessary to making and maintaining a future friendly web. Though this talk on managing the development environment is targeted primarily at developers who want to explore ways to expand workflow, the methods and lessons within very much apply to everyone.
-
-In fact, the more members of a team that can be involved in the push from development to production, the better. This allows that many more incremental improvements without a central gatekeeper.
 
 ## What does this entail?
 
@@ -92,17 +88,25 @@ Pieces:
 	* Establish a workflow.
 	* Include everyone.
 
-I'm going to walk through some opinionated overviews with more detail in some places than others. I'm hoping to get brains moving and ideas triggering. I think we'll have time afterward to go in depth on a few areas of interest if needed.
+## Who are you?
+
+We’re all here as part of the greater web community. We're interested in finding, creating, and playing the roles necessary to making and maintaining a future friendly web. Though this talk is targeted primarily at developers who want to explore ways to expand workflow, the methods and lessons within very much apply to everyone.
+
+In fact, the more members of a team that can be involved in the push from development to production, the better. This allows that many more incremental improvements without a central gatekeeper.
+
+I'm going to walk through some opinionated overviews on each of these four parts. Som ewill have more detail in some places than others. I'm hoping this helps trigger some ideas for later or reinforces some of the workflows you've already established.
 
 ## Version Control
 
 The most important part of a development workflow is version control.
 
-This can be used to keep track of your code and likely some of your processes. At WSU we're currently using it to track our platform code, the provisioning for our servers, and our deployment scripts that get things to production. In some cases we even use it to version our documentation.
+This can be used to keep track of your code and likely some of your processes. At WSU we're currently using it to track our platform code, the provisioning for our servers, and our deployment scripts that get things to production. Our intent is to use it even more for versioning our project documentation.
 
 ### Slide -----smiley------smiley------smiley-------sad Graph with a line back.
 
-Not only does verion control give you the ability to maintain a log of what has happened—something you can reference when trying to determine when a bug was introduced or what the reasoning for an approach was—it allows you to rollback to any point in the history of your project and get a view of how exactly things worked.
+Version control provides a history of changes. When approached properly, this history consists of many small changes—or commits—that are documented with clear notes to explain why the changes have been made. It shows what chunks of work were completed together and who worked on them. And it shows what portions of code were available at various tagged versions in history.
+
+Not only does version control give you the ability to maintain a log of what has happened—something you can reference when trying to determine when a bug was introduced or what the reasoning for an approach was—it allows you to rollback to any point in the history of your project and get a view of how exactly things worked.
 
 The first version control decision to make is which type.
 
@@ -110,9 +114,9 @@ The first version control decision to make is which type.
 
 There's a storied history around the progression of version control over the years that's completely worth reading. I'll have a couple sources attached to the published slides for those that are interested.
 
-The two most popular packages now are Git and SVN. The choice should be made carefully and early. Once you choose one, it's best if you can feel comfortable embracing it.
+The two most popular packages now are Git and Subversion, also known as SVN. The choice between the two—or for another one entirely—should be made carefully and early. Once chosen, it's best if you can feel comfortable embracing it.
 
-Of course, you aren't really choosing between Git and SVN at this point. Your choosing between distributed and centralized workflows.
+Of course, you're not just choosing between Git and SVN at this point. Your choosing between distributed and centralized workflows.
 
 ### Distributed or Centralized
 
@@ -120,7 +124,7 @@ In distributed version control, which Git is, everyone on your team has a full c
 
 Centralized version control, SVN, is completely different in its approach. There is one repository. Everyone checks out a copy of the source from a specific point, but any commits must be pushed back to that central location so that everybody always has access to the same thing.
 
-There are arguments for and against both models. While centralized version control can make things difficult to work with as you rely on that central connection, decentralized can also create scenarios where large swaths of work are done as lone developers—possibly unwilling to show our unfinished work.
+There are arguments for and against both models. While centralized version control can make things difficult to work with as you rely on that central network connection to be there, decentralized systems can create scenarios where large swaths of work are completed by lone developers—possibly unwilling to show our unfinished work.
 
 Having used both fairly extensively, I'm currently a bigger fan of the distributed model. If for no other reason than having the ability to commit code anywhere—like an airplane or other place with limited Internet connectivity. I also enjoy going down an experimental path from time to time without having to worry if I'm affecting the work of others,
 
