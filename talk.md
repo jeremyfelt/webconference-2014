@@ -88,7 +88,7 @@ Pieces:
 	* Establish a workflow.
 	* Include everyone.
 
-## Who are you?
+## Who are we?
 
 We’re all here as part of the greater web community. We're interested in finding, creating, and playing the roles necessary to making and maintaining a future friendly web. Though this talk is targeted primarily at developers who want to explore ways to expand workflow, the methods and lessons within very much apply to everyone.
 
@@ -108,9 +108,9 @@ Version control provides a history of changes. When approached properly, this hi
 
 Not only does version control give you the ability to maintain a log of what has happened—something you can reference when trying to determine when a bug was introduced or what the reasoning for an approach was—it allows you to rollback to any point in the history of your project and get a view of how exactly things worked.
 
-The first version control decision to make is which type.
-
 ### Git or SVN
+
+The first version control decision to make is which type.
 
 There's a storied history around the progression of version control over the years that's completely worth reading. I'll have a couple sources attached to the published slides for those that are interested.
 
