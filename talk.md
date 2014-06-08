@@ -102,7 +102,7 @@ The most important part of a development workflow is version control.
 
 This can be used to keep track of your code and likely some of your processes. At WSU we're currently using it to track our platform code, the provisioning for our servers, and our deployment scripts that get things to production. Our intent is to use it even more for versioning our project documentation.
 
-### Slide -----smiley------smiley------smiley-------sad Graph with a line back.
+## git log --oneline --graph
 
 Version control provides a history of changes. When approached properly, this history consists of many small changes—or commits—that are documented with clear notes to explain why the changes have been made. It shows what chunks of work were completed together and who worked on them. And it shows what portions of code were available at various tagged versions in history.
 
