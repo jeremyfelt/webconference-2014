@@ -146,7 +146,15 @@ The first example is simple, and my favorite for most projects, especially when 
 
 This can mean that the master branch is constantly being updated. It also means that production is constantly changing. This can be helpful when you're goal is to keep pushing the platform forward, as features are always hitting and bugs are always being fixed.
 
-### More of a standard workflow
+### Slightly extended workflow
+
+This workflow introduces the concept of a develop branch. Master is considered stable at all times and is used as the branch releases are tagged from. Develop is the unstable branch that features and bugs are merged into. You can see how the lines on this graph view diverge a bit before coming back together into master when ready.
+
+### More complex workflows
+
+Of course, more complex workflows exist. This is an image from nvie.com's gitflow model that shows a very well thought out branching model that accounts for stable releases, an unstable develop branch, feature branches, bug fixes, release branches, and hotfixes.
+
+There is a lot to keep track of here, but it can prove useful if you have a team that's ready for it.
 
 http://nvie.com/posts/a-successful-git-branching-model/
 
