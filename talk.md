@@ -252,7 +252,7 @@ So my daily workflow, almost the first thing I do when I walk into the office, s
 
 This fires my up my virtual machine and starts all of the services I need to develop locally.
 
-I subscribe to updates on various packages like PHP and Nginx, so I'm often aware when a new release is available and if it includes updates that we should look at for production. At this point, I'll run `vagrant provision` to have my local machine go through the same provisioning that would occur on production.
+I subscribe to updates on various packages like PHP and Nginx, so I'm often aware when a new release is available and if it includes updates that we should look at for production. At this point, if there is something that should be updated in the server environment, I'll run `vagrant provision` to have my local machine go through the same provisioning that would occur on production.
 
 And if all this completes successfully and the project is working as expected, I connect to the production machine and issue two commands.
 
