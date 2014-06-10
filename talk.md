@@ -94,7 +94,7 @@ We’re all here as part of the greater web community. We're interested in findi
 
 In fact, the more members of a team that can be involved in the push from development to production, the better. This allows that many more incremental improvements without a central gatekeeper.
 
-I'm going to walk through some opinionated overviews on each of these four parts. Som ewill have more detail in some places than others. I'm hoping this helps trigger some ideas for later or reinforces some of the workflows you've already established.
+I'm going to walk through some opinionated overviews on each of these four parts. Some will have more detail in some places than others. I'm hoping this helps trigger some ideas for later or reinforces some of the workflows you've already established.
 
 ## Version Control
 
